@@ -15,7 +15,7 @@ elif user_choice == '2':
     orientationSort(path)
 
 # OTHER IDEAS:
-# VIDEO ORIENTATION
+#C:\Users\mafar\Videos\dev\DB
 
 
 

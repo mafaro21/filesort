@@ -1,3 +1,4 @@
 
 #ignore packages
-/Lib
+Lib/
+Scripts/
