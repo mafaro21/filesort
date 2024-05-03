@@ -1,7 +1,7 @@
 from fileSorter import SortExtension
 from  orientation import orientationSort
 
-user_choice =  input('Choose what you want:\n\n(1) Sort files by extension \n(2) Sort files by orientation \n -> ')
+user_choice =  input('Choose what you want:\n\n(1) Sort files by extension \n(2) Sort videos by orientation \n -> ')
 
 raw_path = input('Provide the path to sort \n ->')
 
