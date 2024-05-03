@@ -10,6 +10,8 @@ def orientationSort(vid_path):
 
     folders = ['landscape','vertical']
 
+    file_types = ['.mp4', '.avi', '.mov', '.wmv', '.flv', '.mkv', '.webm', '.3gp', '.3g2', '.mpeg', '.ogg', '.divx', '.xvid', '.h.264','.h.264' ]
+
     #create folders
     for loop in folders:
         if not os.path.exists(vid_path + loop):
@@ -22,16 +24,20 @@ def orientationSort(vid_path):
         OKGREEN = '\033[92m'
         WARNING = '\033[93m'
         FAIL = '\033[91m'
+        ENDC = '\033[0m'
+        DONE = '\033[95m'
 
-    #separate files from folders ---- maybe use opencv
-    for file in files_in_path:
-        
-        raw_files.append(file)
-        split_names = os.path.splitext(file)
-        extension_name = split_names[1]
+    #separate files from folders, exclude non video files ---- maybe use opencv
+    for type in file_types:
+        for file in files_in_path:
 
-        if not len(extension_name) == 0:
-            clean_files.append(file)
+            raw_files.append(file)
+            split_names = os.path.splitext(file)
+            extension_name = split_names[1]
+
+            if not len(extension_name) == 0:
+                if extension_name == type:
+                    clean_files.append(file)
         
     # clean_files_length = len(clean_files)
    
@@ -67,8 +73,8 @@ def orientationSort(vid_path):
 
     #print message after sorting
     if vertical_files or landscape_files >= 1:
-        print( vertical_files ,colors.OKGREEN + 'vertical files have been sorted'+ colors.ENDC)
-        print( landscape_files ,colors.OKGREEN + 'landscape files have been sorted'+ colors.ENDC)
-        print('Process took', minutes, "minute(s) &", seconds, 'seconds to sort')
+        print( vertical_files ,colors.DONE + 'vertical files have been sorted'+ colors.ENDC)
+        print( landscape_files ,colors.DONE + 'landscape files have been sorted'+ colors.ENDC)
+        print(colors.OKGREEN + 'Process took', minutes, "minute(s) &", seconds, 'seconds to sort'+ colors.ENDC)
     else:
         print(colors.FAIL + "There has been an error sorting." + colors.ENDC)
