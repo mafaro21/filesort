@@ -10,7 +10,7 @@ def orientationSort(vid_path):
 
     folders = ['landscape','vertical']
 
-    file_types = ['.mp4', '.avi', '.mov', '.wmv', '.flv', '.mkv', '.webm', '.3gp', '.3g2', '.mpeg', '.ogg', '.divx', '.xvid', '.h.264','.h.264' ]
+    file_types = ['.mp4','.avi', '.mov', '.wmv', '.flv', '.mkv', '.webm', '.3gp', '.3g2', '.mpeg', '.ogg', '.divx', '.xvid', '.h.264','.h.264' ]
 
     #create folders
     for loop in folders:
@@ -33,7 +33,8 @@ def orientationSort(vid_path):
 
             raw_files.append(file)
             split_names = os.path.splitext(file)
-            extension_name = split_names[1]
+            raw_extension = split_names[1]
+            extension_name = raw_extension.lower()
 
             if not len(extension_name) == 0:
                 if extension_name == type:
