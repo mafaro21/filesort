@@ -11,14 +11,14 @@ def musicSort(path):
         split_names = os.path.splitext(file)
         raw_extension = split_names[1]
         extension_name = raw_extension.lower()
-    
+
         if extension_name == '.mp3':
             clean_files.append(file)
 
 
     # test remove site name in songs  
     for sound in clean_files:
-        audio = eyed3.load(path + '/' + sound)
+        audio = eyed3.load(path + "/" + sound)
 
         if '|' in audio.tag.title:
             pattern = r'\|(.*)'
@@ -32,5 +32,5 @@ def musicSort(path):
         #     new = re.sub(pattern, replace,audio.tag.title)
         #     audio.tag.title = new
         #     audio.tag.save()
-        
-    print('Done')
+            
+        # print('Done')

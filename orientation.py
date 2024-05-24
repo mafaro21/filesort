@@ -29,16 +29,20 @@ def orientationSort(vid_path):
 
     #separate files from folders, exclude non video files ---- maybe use opencv
     for type in file_types:
-        for file in files_in_path:
+        
+        if type  in file_types:
+            for file in files_in_path:
 
-            raw_files.append(file)
-            split_names = os.path.splitext(file)
-            raw_extension = split_names[1]
-            extension_name = raw_extension.lower()
+                raw_files.append(file)
+                split_names = os.path.splitext(file)
+                raw_extension = split_names[1]
+                extension_name = raw_extension.lower()
 
-            if not len(extension_name) == 0:
-                if extension_name == type:
-                    clean_files.append(file)
+                if not len(extension_name) == 0:
+                    if extension_name == type:
+                        clean_files.append(file)
+        else:
+            break
         
     # clean_files_length = len(clean_files)
    
@@ -61,10 +65,14 @@ def orientationSort(vid_path):
             if vid in files_in_path and not os.path.exists(vid_path + 'landscape/' + vid):
                 landscape_files += 1
                 shutil.move(vid_path + vid, vid_path + 'landscape/' + vid)
+            else:
+                print('Duplicate File Found -->', vid)
         else:
             if vid in files_in_path and not os.path.exists(vid_path + 'vertical/' + vid):
                 shutil.move(vid_path + vid, vid_path + 'vertical/' + vid)
                 vertical_files += 1
+            else:
+                print('Duplicate File Found -->', vid)
 
     end_time = time.time()
     elapsed_time = end_time - start_time
